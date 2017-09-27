@@ -1,0 +1,32 @@
+
+     /***************************************  修改导航部分   ********************************************************/
+     .MD_menu{margin: 0 auto 5vh auto;width: 90%;}
+     .MD_menu li{overflow: hidden;-background: skyblue;width: 100%;}
+     .MD_menu li h2{height:10vh;line-height: 10vh;font-size: 1.3vw;float: left;text-align: center;margin: 0;
+                                background:#2B3946; color: #fff;font-weight: normal;border-right:1px solid #ddd;
+                                box-sizing: border-box;}
+      .MD_menu li h2:nth-last-child(1){border: none;width: 10%;}
+      .MD_menu li h2:nth-child(1){width: 15%;}
+      .MD_menu li h2:nth-child(2){width: 35%;}
+      .MD_menu li h2:nth-child(3){width: 50%;}
+
+     .MD_menu li p{float: left;transition: 0.4s;height:10vh;margin:0;
+                   display: flex;justify-content: center;align-items: center;
+                   overflow: auto;font-size: 1.2vw; border:0.05vw solid #333;box-sizing: border-box}
+      .MD_menu li p:nth-child(1){width:15%;}
+      .MD_menu li p:nth-child(2){width: 35%;}
+      .MD_menu li p:nth-child(3){width: 50%;}
+
+        .add{background: #16B398;color: #fff;cursor: pointer; float: right;margin-top: 1vh;color: #fff;padding: 2vh 1vw;}
+        .add:active{transform:scale(1.05)}
+     .MD_menu li p button{padding: 1vh 2vw;box-sizing: border-box;font-size: 1.2vw;}
+     .MD_menu li p button.save{background:#16B398; }
+     .MD_menu li p button.dele{background:red; }
+     .MD_menu li p button.modify{background:deepskyblue; }
+     .MD_menu li .print{background: #16B398;color: white; }
+     .MD_menu li p:focus{
+            background: #16B398;color: white;outline: none
+        }
+
+
+        /*****************************************************************************************************/

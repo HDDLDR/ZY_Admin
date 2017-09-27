@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta  charset="utf-8">
+	<title>数据管理系统</title>
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="css/DataBase.css">
+        <link rel="stylesheet" type="text/css" href="css/Menu.css">
+	<style type="text/css" media="screen">
+    </style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+<body>
+        <ul id="typeList" class="animated bounceInLeft">
+            <li class="meShow">首页</li>
+            <li>热销推荐</li>
+            <li>关于我们</li>
+            <li>行业新闻</li>
+            <li>集团新闻</li>
+            <li>联系我们</li>
+        </ul>
+    <div id="messages">
+        <div id="msg1">
+            <ul class="msgList msgList_A">
+                <li class="animated rubberBand">
+            <h2 data-toggle="modal" data-target=".Home_Menu" class="Goset_Menu"><a href="#">修改导航</a></h2>
+            <h2 data-toggle="modal" data-target=".Home_Banner" class="Goset_Menu"><a href="html/banner.html">修改轮播图信息</a></h2>
+            <h2><a href="">修改热销推荐</a></h2>
+            <h2><a href="">修改集团简介信息和图片</a></h2>
+            <h2><a href="">修改行业新闻</a></h2>
+            <h2><a href="">修改企业团队</a></h2>
+                </li>
+                <!--<li>-->
+                    <!--<p class="uid_1">1</p>-->
+                    <!--<p>小李</p>-->
+                    <!--<p>6666</p>-->
+                    <!--<p>-->
+                        <!--<button class="modify" name="modify">修改</button>-->
+                        <!--<button class="save"  name="save">保存</button>-->
+                        <!--<button class="dele"  name="dele">删除</button>-->
+                    <!--</p>-->
+                <!--</li>-->
+            </ul>
+        </div>
+        <div id="msg2">
+            <ul class="msgList msgList_B">
+                <li>
+                    <h2><a href="#">班级</a></h2>
+                    <h2><a href="#">编号</a></h2>
+                    <h2><a href="#">姓名</a></h2>
+                    <h2><a href="#">手机</a></h2>
+                    <h2><a href="#">修改</a></h2>
+                </li></ul>
+        </div>
+        <div id="msg3">
+            <ul class="msgList msgList_C">
+                <li>
+                    <h2><a href="#">班级</a></h2>
+                    <h2><a href="#">编号</a></h2>
+                    <h2><a href="#">姓名</a></h2>
+                    <h2><a href="#">手机</a></h2>
+                    <h2><a href="#">修改</a></h2>
+                </li></ul>
+        </div>
+        <div id="msg4">
+            <ul class="msgList msgList_D">
+                <li>
+                    <h2><a href="#">班级</a></h2>
+                    <h2><a href="#">编号</a></h2>
+                    <h2><a href="#">姓名</a></h2>
+                    <h2><a href="#">手机</a></h2>
+                    <h2><a href="#">修改</a></h2>
+                </li></ul>
+        </div>
+        <div id="msg5">
+            <ul class="msgList msgList_E">
+                <li>
+                    <h2><a href="#">班级</a></h2>
+                    <h2><a href="#">编号</a></h2>
+                    <h2><a href="#">姓名</a></h2>
+                    <h2><a href="#">手机</a></h2>
+                    <h2><a href="#">修改</a></h2>
+                </li></ul>
+        </div>
+        <div id="msg6">
+            <ul class="msgList msgList_F">
+                <li>
+                    <h2><a href="#">班级</a></h2>
+                    <h2><a href="#">编号</a></h2>
+                    <h2><a href="#">姓名</a></h2>
+                    <h2><a href="#">手机</a></h2>
+                    <h2><a href="#">修改</a></h2>
+                </li></ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 遮罩 -->
+<!-- - 模态框:导航的遮罩 - -->
+<div class="modal fade Home_Menu" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+           <div class="modal-header">
+             <span>导航</span>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+        <div class="modal-body">
+                <ul class="MD_menu">
+                <li><span class="menu_Tips"></span><button class="add" name="add" onclick="Add('menu')">添加新导航</button></li>
+                     <li>
+                             <h2>编号</h2>
+                             <h2>导航内容</h2>
+                             <h2>操作</h2>
+                    </li>
+                </ul>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- - 模态框:轮播图 - -->
+<div class="modal fade Home_Banner" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+           <div class="modal-header">
+             <span>轮播图</span>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+        <div class="modal-body">
+                轮播图
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- end -->
+
+
+
+
+
+
+
+
+
+<script src="js/DataBase.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

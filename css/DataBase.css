@@ -1,0 +1,50 @@
+
+/* DataBase后台管理style */
+*{margin:0;padding:0;list-style:none;
+            font-family:"microsoft yahei";
+            text-decoration: none;}
+        body{color: #333;}
+
+        /*********************************  左侧导航菜单布局   ********************************************************/
+    #typeList{width: 20%;height: 100vh;transition: 0.5s;
+                background:#2B3946;
+                position: fixed;
+                top:0;left:0;z-index: 100; }
+    #typeList li{height:12vh;line-height: 12vh;color: #16B398;
+                 font-size: 1.5vw;cursor: pointer;text-align: center;transition:0.3s}
+    #typeList .meShow{background: #16B398;color: #fff;}
+    #messages{position: absolute;right: 0;transition: 0.5s;
+                    top:0;height:100%;width: 80%;background: pink}
+    #messages div{width: 100%;height: 200%;position: absolute;
+                     top:0;left: 0;display: none}
+    #messages #msg1{background: skyblue;z-index:80;display: block}
+    #messages #msg2{background: orange;z-index:70}
+    #messages #msg3{background: pink;z-index:60}
+    #messages #msg4{background: #0ff;z-index:50}
+    #messages #msg5{background: deeppink;z-index:40}
+    #messages #msg6{background: deepskyblue;z-index:30}
+
+
+     button{border: none;outline:none;cursor: pointer;}
+     .msgList{margin: 10vh auto;width: 50%;}
+     .msgList li{overflow: hidden;}
+     .msgList li h2{height:100%;width: 100%; margin:0;}
+     .msgList li h2 a{display:block;height:100%;width: 100%;text-align: center;line-height: 10vh;font-size: 1.3vw;border-bottom:1px solid #ddd; text-decoration: none; transition: 0.3s; box-sizing: border-box;cursor: pointer;background:#2B3946; color: #fff;font-weight: normal;}
+     .msgList li h2:nth-last-child(1) a{border: none}
+     .msgList li h2 a:hover{
+        color:#2B3946;background: #fff;-border-bottom-color: #2B3946;  text-decoration: none;
+     }
+
+     .msgList li p{width:20%;height:100%;float: left;transition: 0.2s;
+                   display: flex;justify-content: center;align-items: center;
+                   overflow: auto;font-size: 1.2vw; border:0.05vw solid #333;box-sizing: border-box}
+        .add{background: #16B398;color: #fff;cursor: pointer; float: right;margin-top: 1vh;color: #fff;padding: 2vh 1vw;}
+        .add:active{transform:scale(1.05)}
+        .msgList li p button{padding: 1vh 1vw;box-sizing: border-box;font-size: 1.2vw;}
+     .msgList li p button.save{background:#16B398; }
+     .msgList li p button.dele{background:red; }
+     .msgList li p button.modify{background:deepskyblue; }
+     .msgList li .print{background: #16B398;color: white; }
+
+        /*****************************************************************************************************/
+

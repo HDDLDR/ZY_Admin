@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta  charset="utf-8">
+	<title>轮播图</title>
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../css/Menu.css">
+	<style type="text/css" media="screen">
+        html,body{width: 100%;height:100%;}
+        #Banner{width: 100%;height:100%;background: #00e799;}
+       #msg{padding: 2vw 0}
+      .MD_menu li h2:nth-child(1),.MD_menu li p:nth-child(1){width: 15%;}
+      .MD_menu li h2:nth-child(2),.MD_menu li p:nth-child(2){width: 20%;}
+      .MD_menu li h2:nth-child(3),.MD_menu li p:nth-child(3){width: 45%;}
+      .MD_menu li h2:nth-child(4),.MD_menu li p:nth-child(4){width: 20%;}
+      .MD_menu li p{height:20vh;overflow: hidden;box-sizing: border-box;border: 0.05vh solid #333;
+                      font-size: 1.2vw
+                    }
+      .MD_menu li p img{height:80%;width: 80%;}
+      .MD_menu li p:nth-child(2){padding:2vh 1.5vw;}
+      .MD_menu li p:nth-child(3){padding:2vh 1.5vw;}
+      .Goset_Menu{cursor: pointer;}
+      .MD_menu li p span{display: blcok;width: 100%;line-height:20vh;height:20vh;
+                          text-align: center;transition:0.5s;
+                          }
+      .myHiddenBox{width: 80%;margin:0 auto;background: pink}
+      .myHiddenBox label{display: block;width: 100%;margin: 2vh auto;border: 0.05vh solid #00e799;overflow: hidden;}
+      .myHiddenBox label span{       font-size: 1vw;
+                                      display: block;
+                                      float: left;
+                                      height:100%;
+                                      line-height: 20vh;
+                                      text-align:center;
+                                      width: 17%;font-size: 1.4vw;font-weight: normal;
+                              }
+      .myHiddenBox .labelTitle{height:12vh;}
+      .myHiddenBox .labelTitle span{height:100%;line-height: 12vh;}
+      .myHiddenBox .labelTitle input{float:right;height:100%;width:80%;outline: none;
+                                    border:none;transition: 0.3s;
+                                     background: #00e799;color:#fff;
+                                     font-size: 1.5vw;font-weight: normal;box-sizing: border-box;
+                                  }
+      .myHiddenBox .labelCon{height:22vh;}
+        .myHiddenBox .labelCon textarea{float:right;
+                                      max-height:100%;max-width: 80%;
+                                      min-height:100%;min-width: 80%;
+                                      resize: none;
+                                      transition:0.3s;
+                                    border:none;outline: none;
+                                    background: #00e799;color:#fff;font-size: 1.2vw;
+                                    line-height: 4vh;font-weight: normal;
+                                    padding:1vh 1vw;
+                                     box-sizing: border-box; }
+        .myHiddenBox label textarea:focus{background: #fff;color:#00e799;border: 0.05vh solid #00e799;}
+        .myHiddenBox label input:focus{background: #fff;color:#00e799;border: 0.05vh solid #00e799;}
+      .myHiddenBox input{height:10vh;padding:0 1vw;box-sizing: border-box;font-size: 1vw}
+      .myFileBtn{border:0.05vh solid #00e799;width: 70%;height:30vh;margin:0 auto;line-height: 15vh;text-align:center;
+                font-size: 2vw;position: relative;}
+      .myFileBtn input{border: 0.05vh solid #00e799;height:100%;width: 100%;opacity: 0;cursor:pointer;
+                      filter:alpha(opacity=0);position: absolute;top:0;left: 0; }
+      .upload{display:block;background:#00e799;font-size: 1.5vw;cursor: pointer;
+                padding:3vh 5vw;margin:5vh auto;color:#fff;border:none;border-radius:0.5vw;}
+      .ActFileBtn{background: #333;color:#fff;}
+
+
+
+    </style>
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+</head>
+<body>
+
+  <!-- 表头的一行标记 -->
+    <div id="Banner">
+        <div id="msg">
+            <ul class="MD_menu">
+                    <li>
+                             <h2 class="animated wobble">图片</h2>
+                             <h2 class="animated wobble">标题</h2>
+                             <h2 class="animated wobble">内容</h2>
+                             <h2 class="animated wobble">修改</h2>
+                    </li>
+                </ul>
+        </div>
+    </div>
+<!-- end -->
+
+
+<!-- 三个模态框 -->
+<div id="HiddenBigBox">
+</div>
+<!-- end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- - 模态框:修改图片 - -->
+<!-- 在顶部追加了遮罩 -->
+<!-- end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+/******************************************  修改图片  ****************************************************/
+        var myDomain='http://localhost:3000/';
+
+
+        //==========> 1、请求轮播图list数据
+                 $.ajax({
+                      type:'get',
+                      url:myDomain+'HB/Home_bannerlist',
+                      database:'json',
+                      success:function(X){
+                               console.log(X);
+                                X.map((item,k)=>{
+                                  $('.MD_menu').append(`<li>
+                                    <p><img src="${myDomain}images/Pic_${item.picURL}" alt="ZoeDesign"/></p>
+                                    <p>${item.bTitle}</p>
+                                    <p>${item.bTxt}</p>
+                                    <p><span data-toggle="modal" data-target=".Home_${item.uTarget}" class="Goset_Menu">点击修改</span></p>
+                                    </li>`)
+                                    $('#HiddenBigBox').append(`<div class="modal fade Home_${item.uTarget}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                                          <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                   <div class="modal-header">
+                                                     <span>导航</span>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                  </div>
+                                                <div class="modal-body">
+                                                    <div class="myHiddenBox" key="${item.uid}">
+                                                      <h1 class="msg"></h1>
+                                                      <label for="bTitle" class="labelTitle"><span>标题：</span><input type="text" name="me" placeholder="标题" class="bTitle" value="${item.bTitle}"></label>
+                                                      <label for="bTxt" class="labelCon"><span>内容：</span><textarea name="me" placeholder="内容" class="bTxt">${item.bTxt}</textarea></label>
+                                                      <p class="myFileBtn" style="background:url(${myDomain}images/Pic_${item.picURL})no-repeat center;background-size:100% 100%;" >选择图片<input type="file" accept="image/*"  onchange="setFiles(this)"  id="me">
+                                                      </p>
+                                                      <button class="upload"  class="animated wobble" onclick="myUpload($(this))">确定修改</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+                                        </div>`)
+
+                                })
+                                $('.MD_menu p span').click(function(){
+                                  $(this).addClass('ActFileBtn');
+                                   // $(this).parent('p').parent('li').siblings().children('.myFileBtn').children('span');
+                                   $(this).parent('p').parent('li').siblings().children('p:nth-last-child(1)').children('span').removeClass('ActFileBtn')
+                              });
+                                // $('textarea').click(function(){ console.log($(this).val()) })
+
+
+                      },error:function(){
+                        alert('出错了！');
+                      }
+              })
+
+
+
+
+
+
+          var files;
+            function setFiles(element){
+              // console.log(element.files);
+              files=element.files[0];
+              console.log(files);
+                  var FR=new FileReader();
+                   FR.readAsDataURL(files);
+                   FR.onload=function(){
+                       $('.myFileBtn').css('backgroundImage','url('+this.result+')')
+                       // console.log(this.result)
+                   }
+
+            }
+
+
+function myUpload(WHO){
+                 var fd=new FormData();  //表单处理数据的方法
+                fd.append('uploadedFile',files); //用append方法以键值对的方式保存
+                fd.enctype="multipart/form-data";
+
+              var whoNum=WHO.parent('div').attr('key');
+              var _bTitle=WHO.prev().prev().prev().children('input').val();
+              var _bTxt=WHO.prev().prev().children('textarea').val();
+               // console.log(files);
+               // console.log(whoNum);
+
+         //==========>  2、修改轮播图list信息
+                    $.ajax({
+                                type:"post",
+                                url:myDomain+"imgs/adds",
+                                async:true,
+                                data:fd,
+                                contentType:false,
+                                processData:false,
+                                success:function(X){
+                                    console.log(X);
+                                  $.ajax({
+                                        type:"post",
+                                        url:myDomain+"imgs/setPic_sql",
+                                        async:true,
+                                         data:{
+                                               'URL':X,
+                                               'bTitle':_bTitle,      //标题
+                                               'bTxt':_bTxt,        //内容
+                                               'uid':whoNum,      //修改第几条
+                                         },
+                                        success:function(V){
+                                            console.log('要删掉的旧图是：'+V.oldPic[0].picURL);    //获取后台传过来要删除的旧图
+                                                var delePic=V.oldPic[0].picURL;
+                                            //接收旧图并删除它
+                                              $.ajax({
+                                                  type:"post",
+                                                  url:myDomain+"imgs/delePic_sql",
+                                                  async:true,
+                                                   data:{
+                                                         'deleURL':'public/images/Pic_'+delePic,
+                                                   },
+                                                  success:function(J){
+                                                      console.log(J);
+
+
+                                                  }
+                                              });
+
+                                        }
+                                    });
+                                },
+                                error:function(){
+                                            $('.msg').text('出错啦！')
+                                }
+
+                            });
+}
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
