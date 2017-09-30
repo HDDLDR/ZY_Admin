@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>team</title>
+    <style>
+        img{
+            width:300px;
+            height: 340px;
+            -webkit-filter:saturate(1.2);
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <!--<h5 class="title">安藤忠雄 Tadao Ando</h5>-->
+    <!--<h6 class="job">总经理</h6>-->
+    <!--<p class="text">如同沙漠中的堡垒一片墙体并不仅仅是一个保护性的屏障而且是一个精神的桥头堡在不断变化着的城市中清晰地肯定着自身的存在</p>-->
+
+    <!--<h5 class="title">妹岛和世 Kazuyo Sejima</h5>-->
+    <!--<h6 class="job">策划人员</h6>-->
+    <!--<p class="text">SANAA建筑设计事务所的作品多带有重要的“穿透性”风格大量的运用玻璃外墙等材质让建筑感觉轻而且飘浮</p>-->
+
+    <h5 class="title">长谷川逸子 HASEGAWA ITSUKO</h5>
+    <h6 class="job">导游</h6>
+    <p class="text">在建筑中“体”与“用”是一对互相依存又互相矛盾的关系Itsuko Hasegawa的建筑有意识地创造出一种有机的平衡</p>
+
+    <p><input type="file" onchange="setFiles(this)"></p>
+    <p><button id="upload">上传</button></p>
+</body>
+<script type="text/javascript">
+    var files;
+    function setFiles(element){
+        files=element.files[0];
+        console.log(files);
+    }
+    $('#upload').click(function(){
+        var fd=new FormData();  //表单处理数据的方法
+        fd.append('uploadedFile',files); //用append方法以键值对的方式保存
+        $.ajax({
+            type:'post',
+            url:'http://localhost:3000/teamimg/teamimg',
+            async:true,
+            data:fd,
+            cache:false,
+            contentType:false,
+            processData:false,
+            success:function(data){
+                console.log(data);
+                $.ajax({
+                    type:'get',
+                    url:'http://localhost:3000/teamimg/teamimg',
+                    data:{
+                        'title':$('.title').html(),
+                        'job':$('.job').html(),
+                        'text':$('.text').html(),
+                        'teamimg':data
+                    },
+                    success:function(list){
+                        console.log(list);
+                    },
+                    error:function(){
+                        alert("服务器错误");
+                    }
+                });
+            },
+            error:function(){
+                alert("服务器错误");
+            }
+        });
+    })
+</script>
+</html>

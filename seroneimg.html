@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>service-one-img</title>
+    <style>
+        img{
+            width:365px;
+            height: 240px;
+            -webkit-filter:saturate(1.2);
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <!--<p class="hanzi">物流的运输则专指“物”的载运及输送。它是在不同地域范围间（如两个城市.两个工厂之间，或一大企业内相距较远的两车之间），以改变“物”的空间位置为目的的活动，是对“物”进行的空间位移。</p>-->
+    <!--<p class="english">Carrying and transportation logistics transportation refers to the "object". It is in between different regions (such as two cities. Between the two plants, or a large enterprise apart far between the two vehicles) to change the spatial position of the "objects" for aim, is to "matter" for spatial displacement.</p>-->
+
+    <!--<p class="hanzi">运输是把产品从生产地运往消费地的活动，因此从整个社会生产过程来说，运输是在流通领域内继续的生产过程，并在其中完成。</p>-->
+    <!--<p class="english">Praesent sit amet erat sapien, auctor consectetur ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non ligula augue. Integer justo arcu, tempor eu venenatis non, sagittis nec lacus. Morbi vitae dui et nunc ornare vulputate non fringilla massa. Praesent sit amet erat sapien, auctor consectetur ligula.</p>-->
+
+    <p class="hanzi">对不同的运输方式来说，虽然他们使用不同的运输工具，具有不同的技术经济特征，在不同的线路上进行运输生产活动，但它们对社会具有相同的效用，即都实现了物品的空间位移。</p>
+    <p class="english">1Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod lobortis aliquam. Aliquam in tortor enim. orci ut et lobortis aliquam. Aliquam in tortor enim.</p>
+
+    <p><input type="file" onchange="setFiles(this)"></p>
+    <p><button id="upload">上传</button></p>
+</body>
+<script type="text/javascript">
+    var files;
+    function setFiles(element){
+        files=element.files[0];
+        console.log(files);
+    }
+    $('#upload').click(function(){
+        var fd=new FormData();  //表单处理数据的方法
+        fd.append('uploadedFile',files); //用append方法以键值对的方式保存
+        $.ajax({
+            type:'post',
+            url:'http://localhost:3000/seroneimg/seroneimg',
+            async:true,
+            data:fd,
+            cache:false,
+            contentType:false,
+            processData:false,
+            success:function(data){
+                console.log(data);
+                $.ajax({
+                    type:'get',
+                    url:'http://localhost:3000/seroneimg/seroneimg',
+                    data:{
+                        'serhanzi':$('.hanzi').html(),
+                        'serenglish':$('.english').html(),
+                        'serimg':data
+                    },
+                    success:function(list){
+                        console.log(list);
+                    },
+                    error:function(){
+                        alert("服务器错误");
+                    }
+                });
+            },
+            error:function(){
+                alert("服务器错误");
+            }
+        });
+    })
+</script>
+</html>
